@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Lab5_Prelab_PartB</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-10-27">
+<meta name="DC.source" content="Lab5_Prelab_PartB.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+<span class="comment">%Lab 5 - Prelab Part B</span>
+
+<span class="comment">%Define known values</span>
+R1 = 1e3;
+R2 = 1.8e3;
+R3 = 2.7e3;
+R4 = 3e3;
+R5 = 4.7e3;
+R6 = 6.2e3;
+R7 = 10e3;
+R8 = 15e3;
+R9 = 20e3;
+Vs1 = 10;
+Vs2 = 4;
+
+<span class="comment">% Set up the variables V2, V3, V5</span>
+syms <span class="string">V2</span> <span class="string">V3</span> <span class="string">V5</span>
+
+<span class="comment">% KCL equations for nodes 2, 3, and 5</span>
+eq1 = (V2 - Vs1)/R1 + (V2 - V3)/R3 + (V2 - V5)/R5 + V2/R9 == 0;
+eq2 = (V3 - V2)/R3 + (V3 - Vs2)/R4 + (V3 - V5)/R7 + V3/R6 == 0;
+eq3 = (V5 - V2)/R5 + (V5 - V3)/R7 + V5/R8 == 0;
+
+<span class="comment">% Solve for V2, V3, V5</span>
+solutions = solve([eq1, eq2, eq3], [V2, V3, V5]);
+V2_val = double(solutions.V2);
+V3_val = double(solutions.V3);
+V5_val = double(solutions.V5);
+
+<span class="comment">% Thevenin equivalent voltage Vth</span>
+Vth = V5_val;
+
+<span class="comment">% Display</span>
+fprintf(<span class="string">'The Thevenin Voltage (Vth) is %.4f V\n'</span>, Vth);
+</pre>
+<pre class="codeoutput">The Thevenin Voltage (Vth) is 5.8415 V
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+clear 
+close all 
+clc 
+
+%Lab 5 - Prelab Part B
+
+%Define known values 
+R1 = 1e3;
+R2 = 1.8e3;
+R3 = 2.7e3;
+R4 = 3e3;
+R5 = 4.7e3;
+R6 = 6.2e3;
+R7 = 10e3;
+R8 = 15e3;
+R9 = 20e3;
+Vs1 = 10;
+Vs2 = 4;
+
+% Set up the variables V2, V3, V5
+syms V2 V3 V5
+
+% KCL equations for nodes 2, 3, and 5
+eq1 = (V2 - Vs1)/R1 + (V2 - V3)/R3 + (V2 - V5)/R5 + V2/R9 == 0;
+eq2 = (V3 - V2)/R3 + (V3 - Vs2)/R4 + (V3 - V5)/R7 + V3/R6 == 0;
+eq3 = (V5 - V2)/R5 + (V5 - V3)/R7 + V5/R8 == 0;
+
+% Solve for V2, V3, V5
+solutions = solve([eq1, eq2, eq3], [V2, V3, V5]);
+V2_val = double(solutions.V2);
+V3_val = double(solutions.V3);
+V5_val = double(solutions.V5);
+
+% Thevenin equivalent voltage Vth
+Vth = V5_val;
+
+% Display 
+fprintf('The Thevenin Voltage (Vth) is %.4f V\n', Vth);
+
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Lab4_Prelab_Part1</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-10-20">
+<meta name="DC.source" content="Lab4_Prelab_Part1.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+
+
+<span class="comment">%Lab 4 Prelab - Part 1</span>
+
+<span class="comment">% Define the Given Values</span>
+R1 = 1e3;
+R2 = 4.3e3;
+R3 = 10e3;
+R4 = 12e3;
+R5 = 15e3;
+R6 = 18e3;
+Vs = 12;
+
+<span class="comment">%Part A - Calculate the voltages 4 and 5 in Figure 1</span>
+
+Req1 = (R3 * R4) / (R3 + R4);  <span class="comment">% They are in parallel</span>
+
+Req2 = (Req1)*(R2+R5) / (Req1 + R2 + R5); <span class="comment">%In R2 and R5 in series but result in parallel with Req1</span>
+
+V4 = ((Req2) / (R1 + Req2 + R6)) * Vs; <span class="comment">%find V4 using voltage</span>
+
+V5 = ((R5/ R2 + R5)) * V4; <span class="comment">%find V5 using voltage division</span>
+
+
+<span class="comment">%Part b - Calculate the currents going through R4 and R5 (4 and 5 ) in Figure 1.</span>
+
+R_total = Req2 + R1 + R6; <span class="comment">%Total Resitance</span>
+
+I_total = Vs / R_total; <span class="comment">%Total Current</span>
+
+V_parallel = I_total * (Req2);  <span class="comment">% Voltage</span>
+
+IR4 = V_parallel / R4; <span class="comment">%Resistance Across R4</span>
+
+IR5 = V_parallel / R5; <span class="comment">%Resistance Across R4</span>
+
+<span class="comment">%Part C - Calculate the dissipated power in R4 and R5 (4 and 5 ) in Figure 1</span>
+
+P_R4 = V_parallel * IR4;  <span class="comment">% Power in R4</span>
+
+P_R5 = V_parallel * IR5;  <span class="comment">% Power in R5</span>
+
+<span class="comment">% Display results in a table format</span>
+Table_A = table(V_parallel, V_parallel, IR4 * 1e3, IR5 * 1e3, P_R4 * 1e3, P_R5 * 1e3, <span class="keyword">...</span>
+    <span class="string">'VariableNames'</span>, {<span class="string">'v4_V'</span>, <span class="string">'v5_V'</span>, <span class="string">'IR4_mA'</span>, <span class="string">'IR5_mA'</span>, <span class="string">'PR4_mW'</span>, <span class="string">'PR5_mW'</span>});
+
+<span class="comment">% Display the table</span>
+disp(<span class="string">'Table A: Figure 1 Circuit Values'</span>);
+disp(Table_A);
+</pre>
+<pre class="codeoutput">Table A: Figure 1 Circuit Values
+     v4_V      v5_V     IR4_mA     IR5_mA     PR4_mW     PR5_mW 
+    ______    ______    _______    _______    _______    _______
+
+    2.1947    2.1947    0.18289    0.14631    0.40138    0.32111
+
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+clear
+close all 
+clc
+
+
+
+%Lab 4 Prelab - Part 1 
+
+% Define the Given Values
+R1 = 1e3;    
+R2 = 4.3e3;  
+R3 = 10e3;   
+R4 = 12e3;   
+R5 = 15e3;   
+R6 = 18e3;  
+Vs = 12;     
+
+%Part A - Calculate the voltages 4 and 5 in Figure 1
+
+Req1 = (R3 * R4) / (R3 + R4);  % They are in parallel 
+
+Req2 = (Req1)*(R2+R5) / (Req1 + R2 + R5); %In R2 and R5 in series but result in parallel with Req1
+
+V4 = ((Req2) / (R1 + Req2 + R6)) * Vs; %find V4 using voltage 
+
+V5 = ((R5/ R2 + R5)) * V4; %find V5 using voltage division 
+
+
+%Part b - Calculate the currents going through R4 and R5 (4 and 5 ) in Figure 1.
+
+R_total = Req2 + R1 + R6; %Total Resitance
+
+I_total = Vs / R_total; %Total Current
+
+V_parallel = I_total * (Req2);  % Voltage 
+
+IR4 = V_parallel / R4; %Resistance Across R4
+
+IR5 = V_parallel / R5; %Resistance Across R4
+
+%Part C - Calculate the dissipated power in R4 and R5 (4 and 5 ) in Figure 1
+
+P_R4 = V_parallel * IR4;  % Power in R4
+
+P_R5 = V_parallel * IR5;  % Power in R5
+
+% Display results in a table format
+Table_A = table(V_parallel, V_parallel, IR4 * 1e3, IR5 * 1e3, P_R4 * 1e3, P_R5 * 1e3, ...
+    'VariableNames', {'v4_V', 'v5_V', 'IR4_mA', 'IR5_mA', 'PR4_mW', 'PR5_mW'});
+
+% Display the table
+disp('Table A: Figure 1 Circuit Values');
+disp(Table_A);
+
+##### SOURCE END #####
+-->
+</body>
+</html>
